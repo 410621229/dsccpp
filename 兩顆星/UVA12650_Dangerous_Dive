@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+using namespace std;
+int main(){
+    int alive[10001];
+    int Vol, Vollive, tmp, all0;
+    while(scanf("%d %d", &Vol, &Vollive) == 2){
+        all0 = 1;
+        for(int i = 1; i <= Vol; i++)
+            alive[i] = 1;
+        for(int i = 1; i <= Vollive; i++){
+            scanf("%d", &tmp);
+            alive[tmp] = 0;
+        }
+        for(int i = 1; i <= Vol; i++){
+            if(alive[i] == 1){
+                all0 = 0;
+                printf("%d ", i);
+            }
+        }
+        if(all0)
+            printf("*");
+        printf("\n");
+    }
+}
+
