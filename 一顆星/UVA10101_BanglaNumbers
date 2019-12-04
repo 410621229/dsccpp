@@ -1,0 +1,68 @@
+#include <cstdio>
+#include <cstdlib>
+int main(){
+    int C = 0;
+    long long int n;
+    // 6 "\0"!!!!!!!
+    int split[4];
+    while(scanf("%lld",&n)==1){
+        ++C;
+        if(n==0){
+            printf("%d. 0\n",C);
+            continue;
+        }
+        //分段轉整數
+        long long int t = n;
+        int iter = -1;
+        // 7 bit one set
+        while(t!=0){
+            ++iter;
+            split[iter] = t%10000000;
+            t /= 10000000;
+        }
+        printf("%d. ",C);
+        int temp[5],re[4];
+        while(iter>=0){
+                
+            temp[0] = split[iter];
+            temp[1] = temp[0]%10000000;
+            temp[2] = temp[0]%100000;
+            temp[3] = temp[0]%1000;
+            temp[4] = temp[0]%100;
+        
+            re[0] = temp[0]%100;
+            re[1] = (temp[0]%1000)/100;
+            re[2] = (temp[0]%100000)/1000;
+            re[3] = (temp[0]%10000000)/100000;
+            
+            if(iter!=0){
+                if(re[3]!=0)
+                printf("%d lakh ",re[3]);
+                if(re[2]!=0)
+                printf("%d hajar ",re[2]);
+                if(re[1]!=0)
+                printf("%d shata ",re[1]);
+                if(re[0]!=0)
+                printf("%d ",re[0]);
+                printf("kuti ");
+            }
+            
+            else{
+                if(re[3]!=0)
+                printf("%d lakh ",re[3]);
+                if(re[2]!=0)
+                printf("%d hajar ",re[2]);
+                if(re[1]!=0)
+                printf("%d shata ",re[1]);
+                if(re[0]!=0)
+                printf("%d ",re[0]);
+            }
+
+            --iter;
+            
+        }
+        printf("\n");
+        
+    }
+}
+
